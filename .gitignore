@@ -1,0 +1,12 @@
+.env
+.venv/
+vendor/
+node_modules/
+
+public/assets/uploads/*
+!public/assets/uploads/.gitkeep
+
+*.log
+*.tmp
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,193 @@
+Scenarios de captures d ecran - Iran News Portal
+Date: 31/03/2026
+
+Objectif:
+- Disposer de toutes les captures par scenario pour la documentation technique.
+
+==================================================
+1) Captures minimales obligatoires
+==================================================
+
+1. FrontOffice accueil
+   - Ecran: page d accueil avec hero + derniers articles
+   - URL: /
+   - Fichier conseille: fo-accueil.png
+
+2. FrontOffice liste articles
+   - Ecran: liste des articles + pagination
+   - URL: /articles?page=1
+   - Fichier conseille: fo-articles.png
+
+3. FrontOffice detail article
+   - Ecran: page detail d un article publie
+   - URL: /article/{slug}
+   - Fichier conseille: fo-detail-article.png
+
+4. BackOffice login
+   - Ecran: formulaire de connexion admin
+   - URL: /admin/login
+   - Fichier conseille: bo-login.png
+
+5. BackOffice dashboard
+   - Ecran: dashboard avec compteurs
+   - URL: /admin
+   - Fichier conseille: bo-dashboard.png
+
+6. BackOffice liste articles
+   - Ecran: tableau des articles (statut, slug, actions)
+   - URL: /admin/articles
+   - Fichier conseille: bo-articles.png
+
+7. BackOffice formulaire article
+   - Ecran: creation/edition article (SEO + upload)
+   - URL: /admin/articles/create
+   - Fichier conseille: bo-form-article.png
+
+8. Robot.txt
+    accès au sitemap.xml
+==================================================
+2) Scenarios FrontOffice (complets)
+==================================================
+
+1. Navigation accueil vers liste articles
+   - Capturer la page accueil puis la page /articles
+
+2. Pagination articles
+   - Capturer page 1 puis page suivante (si disponible)
+
+3. Detail article
+   - Ouvrir un article depuis la liste et capturer la page detail
+
+4. Page categorie
+   - Ouvrir /categorie/{slug} et capturer la liste par categorie
+
+5. Categorie vide (optionnel)
+   - Capturer le message "Aucun article publie dans cette categorie"
+
+6. Page 404
+   - Saisir une URL invalide et capturer la page 404
+
+7. robots.txt
+   - Ouvrir /robots.txt et capturer le contenu
+
+8. sitemap.xml
+   - Ouvrir /sitemap.xml et capturer le contenu XML
+
+==================================================
+3) Scenarios BackOffice Authentification
+==================================================
+
+1. Login invalide
+   - Action: mauvais identifiants
+   - Resultat: message "Identifiants invalides"
+
+2. Login valide
+   - Action: admin / admin123
+   - Resultat: redirection dashboard + message succes
+
+3. Route protegee sans login
+   - Action: acceder a /admin/articles sans session
+   - Resultat: redirection vers /admin/login
+
+4. Logout
+   - Action: bouton Deconnexion
+   - Resultat: retour login + message deconnexion
+
+==================================================
+4) Scenarios BackOffice Categories
+==================================================
+
+1. Liste categories
+   - URL: /admin/categories
+
+2. Creation categorie (formulaire)
+   - URL: /admin/categories/create
+
+3. Creation categorie succes
+   - Resultat: message "Categorie creee avec succes"
+
+4. Creation categorie erreur validation
+   - Action: laisser le nom vide
+   - Resultat: message erreur
+
+5. Modification categorie
+   - Action: ouvrir une categorie existante en edition
+
+6. Modification categorie succes
+   - Resultat: message "Categorie mise a jour"
+
+7. Suppression categorie
+   - Action: supprimer une categorie
+   - Resultat: message "Categorie supprimee"
+
+==================================================
+5) Scenarios BackOffice Articles
+==================================================
+
+1. Liste articles
+   - URL: /admin/articles
+
+2. Creation article (formulaire complet)
+   - Champs: titre, slug, categorie, resume, contenu, image, meta title, meta description, statut
+
+3. Creation article brouillon
+   - Statut: draft
+   - Resultat: message succes
+
+4. Creation article publie
+   - Statut: published
+   - Resultat: message succes
+
+5. Erreur champs obligatoires
+   - Action: titre/resume/contenu vides
+   - Resultat: message erreur
+
+6. Erreur categorie obligatoire
+   - Action: aucune categorie selectionnee
+   - Resultat: message erreur
+
+7. Erreur upload format invalide
+   - Action: fichier non jpg/png/webp
+   - Resultat: message erreur format
+
+8. Erreur upload taille > 2 MB
+   - Action: image trop lourde
+   - Resultat: message erreur taille
+
+9. Modification article
+   - Action: edition article existant
+   - Resultat: formulaire pre-rempli + image actuelle
+
+10. Modification article succes
+    - Resultat: message "Article mis a jour"
+
+11. Suppression article
+    - Resultat: message "Article supprime"
+
+==================================================
+6) Scenarios de preuve fonctionnelle croisee
+==================================================
+
+1. Publication BO -> visibilite FO
+   - Creer un article en published dans le BO
+   - Verifier et capturer son apparition sur le FO
+
+2. Verification SEO on-page
+     - title
+     - meta description
+     - canonical
+
+3. Verification HTTP 404
+   - Capturer une URL invalide avec page 404 affichee
+
+==================================================
+7) Ordre conseille de prise de captures
+==================================================
+
+1. FrontOffice: accueil, articles, detail, categorie, 404
+2. BackOffice auth: login erreur, login succes, dashboard
+3. BackOffice categories: liste, create/edit/delete
+4. BackOffice articles: liste, create/edit/delete + validations
+5. SEO technique: robots.txt, sitemap.xml, meta/canonical
+
+Fin du document.
