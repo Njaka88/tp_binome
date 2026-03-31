@@ -158,11 +158,79 @@ a:hover {
     border-radius: 20px;
     padding: 28px;
     box-shadow: var(--shadow);
-}
+        max-width: 880px;
+        margin: 28px auto;
+    }
 
 .article-content {
     line-height: 1.8;
-}
+        line-height: 1.8;
+        font-size: 1rem;
+        max-width: 65ch;
+
+    /* Article-specific enhancements */
+    .article-detail .meta {
+        color: var(--muted);
+        font-size: .95rem;
+        margin-bottom: 10px;
+    }
+    .article-detail h1 {
+        font-size: 2.05rem;
+        margin: 6px 0 10px;
+        line-height: 1.08;
+    }
+    .article-detail h2 {
+        font-size: 1.25rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: var(--text);
+    }
+    .article-detail .summary {
+        font-size: 1rem;
+        color: var(--muted);
+        margin-bottom: 18px;
+    }
+
+    /* Drop cap for the first paragraph for a magazine-like feel */
+    .article-content p:first-of-type::first-letter {
+        float: left;
+        font-size: 3.2rem;
+        line-height: 1;
+        margin-right: 10px;
+        font-weight: 700;
+        color: var(--primary-600);
+        font-family: 'IBM Plex Serif', serif;
+    }
+
+    /* Make images inside content responsive and visually integrated */
+    .article-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: var(--shadow-sm);
+        margin: 16px 0;
+    }
+
+    /* Improve hero image treatment for articles */
+    .hero-image {
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+    }
+
+    /* Small screens: tighten typography and spacing */
+    @media (max-width: 480px) {
+        .article-detail {
+            padding: 16px;
+            margin: 18px;
+        }
+        .article-detail h1 {
+            font-size: 1.5rem;
+        }
+        .article-content p:first-of-type::first-letter {
+            font-size: 2.4rem;
+        }
+    }
 
 .chip-row {
     display: flex;
