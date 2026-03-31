@@ -234,18 +234,48 @@ a:hover {
 
 .chip-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 12px;
+    flex-wrap: nowrap;
+    margin-bottom: 18px;
+    padding-bottom: 6px; /* allow space for overflow */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .chip {
     display: inline-flex;
     align-items: center;
-    padding: 8px 12px;
+    gap: 10px;
+    flex: 0 0 auto;
+    padding: 8px 14px;
     border-radius: 999px;
-    border: 1px solid var(--line);
-    background: var(--surface);
+    border: 1px solid rgba(15, 23, 32, 0.04);
+    background: linear-gradient(90deg, rgba(15,118,110,0.06), rgba(239,108,91,0.02));
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+    will-change: transform;
+}
+
+.chip:hover{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+    background: linear-gradient(90deg, rgba(15,118,110,0.12), rgba(239,108,91,0.04));
+}
+
+.chip:focus-visible{
+    outline: 3px solid color-mix(in srgb, var(--primary) 24%, white);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .chip-row { gap: 10px }
+    .chip { padding: 10px 12px; font-size: .95rem }
 }
 
 .button {
